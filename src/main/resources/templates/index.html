@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="keywords" content="java, api, web">
+		<meta name="description" content="Projeto Java Web com API REST">
+		<meta name='copyright' content=''>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+        <!-- Title -->
+        <title>Projeto Java Web com API REST</title>
+        
+        <!-- Import JavaScript -->
+        <script>
+            $("#send").click(function(event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
+        const cpf = $("input[name='cpf']").val();
+
+        // Fazer uma chamada AJAX para a sua API Java
+        $.ajax({
+            url: "http://localhost:8080/aluno",
+            method: "POST",
+            data: { cpf: cpf },
+            success: function(response) {
+                console.log("Dados enviados com sucesso!");
+            },
+            error: function(error) {
+                console.error("Erro ao enviar dados:", error);
+            }
+        });
+    });
+        </script>
+
+        <!-- Import CSS -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+
+    </head>
+    <body>
+        <h1>Formulário de Cadastro</h1>
+        <form id="formularioDeCadastroCliente">
+            <!--<label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="Nome"><br>
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome"><br>-->
+            <label for="cpf">CPF</label>
+            <input type="number" name="cpf" id="cpf" placeholder="CPF"><br>
+            <!--<label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone" placeholder="(81) 99999-9999"><br>-->
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <form id="contatoForm">
+            <input type="text" name="cpf" placeholder="CPF">
+            <button id="send" type="button">Enviar</button>
+        </form>
+
+        <form id="myForm" name="myForm">
+            <div>
+                <label for="username">Enter name:</label>
+                <input type="text" id="username" name="username" />
+            </div>
+            <div>
+                <label for="useracc">Enter account number:</label>
+                <input type="text" id="useracc" name="useracc" />
+            </div>
+            <div>
+                <label for="userfile">Upload file:</label>
+                <input type="file" id="userfile" name="userfile" />
+            </div>
+            <input type="submit" value="Submit!" />
+        </form>
+    </body>
+    </html>
